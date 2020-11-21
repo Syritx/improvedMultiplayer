@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 using System.Text;
 using System.Threading.Tasks;
@@ -103,7 +103,7 @@ namespace _2DMultiplayer.ServerModules {
 
         static void SendToAllClients(string command, Socket ignore, int id) {
 
-            string formattedCommand = "[ID]: " + id + "[COMMAND_BUFFER]" + command;
+            string formattedCommand = "[ID]: " + id + " [COMMAND_BUFFER] " + command;
 
             foreach(Socket clt in clients) {
                 try {
