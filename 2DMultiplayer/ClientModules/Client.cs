@@ -53,14 +53,11 @@ namespace _2DMultiplayer.ClientModules {
                 int response = networkStream.Read(data, 0, data.Length);
                 string responseData = Encoding.ASCII.GetString(data, 0, response);
 
+                Console.WriteLine(responseData);
                 // SPLITING COMMANDS
                 try {
                     // CLIENT ID
                     string[] removeBufferedCommands = responseData.Split(CommandBuffer, StringSplitOptions.None);
-
-                    foreach(string s in removeBufferedCommands) {
-                        Console.WriteLine(s);
-                    }
                     
                     int playerID = Int32.Parse(removeBufferedCommands[0].Split("[ID]: ",StringSplitOptions.None)[1])-1;
                     Console.WriteLine(playerID);
@@ -74,10 +71,10 @@ namespace _2DMultiplayer.ClientModules {
                         coordsInFloat[i] = float.Parse(coords[i]);
                     }
                     clientPositions[playerID] = new Vector2(coordsInFloat[0], coordsInFloat[1]);
-                    //Game.LoadNPC(playerID, clientPositions[playerID]);
+                    Game.LoadNPC(playerID, clientPositions[playerID]);
                     Console.WriteLine("everything works");
                 }
-                catch(Exception e) { Console.WriteLine(e.StackTrace); }
+                catch(Exception e) {}
             }
         }
 

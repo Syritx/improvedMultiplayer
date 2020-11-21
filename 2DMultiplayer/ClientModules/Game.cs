@@ -36,6 +36,7 @@ namespace _2DMultiplayer.ClientModules {
 
             try {
                 foreach(NPC npc in NPCs) {
+                    if (!npc.isCreated) npc.Create();
                     npc.Render();
                 }
             }

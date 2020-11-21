@@ -6,14 +6,16 @@ using OpenTK.Mathematics;
 namespace _2DMultiplayer.ClientModules {
     class NPC {
 
-        public bool isActive = false;
+        public bool isActive = false, isCreated = false;
         public Vector2 position = new Vector2(0,0);
         Shader shader;
         int vertexArrayObject,
             vertexBufferObject;
-        public NPC() {
-            shader = new Shader("ClientModules/Shaders/Player/pVertexShader.glsl", 
-                                "ClientModules/Shaders/Player/pFragmentShader.glsl");
+
+        public void Create() {
+            isCreated = true;
+            shader = new Shader("ClientModules/Shaders/NPC/npcVertexShader.glsl", 
+                                "ClientModules/Shaders/NPC/npcFragmentShader.glsl");
             vertexBufferObject = GL.GenBuffer();
         }
 
