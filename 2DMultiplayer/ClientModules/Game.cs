@@ -34,13 +34,20 @@ namespace _2DMultiplayer.ClientModules {
             GL.Clear(ClearBufferMask.ColorBufferBit);
             player.Render();
 
+
+            // rendering npcs
             try {
                 foreach(NPC npc in NPCs) {
-                    if (!npc.isCreated) npc.Create();
-                    npc.Render();
+                    if (npc != null) {
+                        if (!npc.isCreated) {
+                            npc.Create();
+                            npc.Render();
+                        }
+                        npc.Render();
+                    }
                 }
             }
-            catch(Exception e) {}
+            catch(Exception e) {Console.WriteLine(e.Message);}
             SwapBuffers();
         }
 
@@ -74,6 +81,7 @@ namespace _2DMultiplayer.ClientModules {
             NPCs[index] = new NPC();
             NPCs[index].position = position;
             NPCs[index].isActive = true;
+            Console.WriteLine("created new player model");
         }
     }
 }

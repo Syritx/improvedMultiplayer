@@ -17,6 +17,7 @@ namespace _2DMultiplayer.ClientModules {
             shader = new Shader("ClientModules/Shaders/NPC/npcVertexShader.glsl", 
                                 "ClientModules/Shaders/NPC/npcFragmentShader.glsl");
             vertexBufferObject = GL.GenBuffer();
+            Render();
         }
 
         public void Render() {
