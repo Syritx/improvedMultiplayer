@@ -78,10 +78,16 @@ namespace _2DMultiplayer.ClientModules {
         }
 
         public static void LoadNPC(int index, Vector2 position) {
-            NPCs[index] = new NPC();
-            NPCs[index].position = position;
-            NPCs[index].isActive = true;
-            Console.WriteLine("created new player model");
+
+            if (NPCs[index] == null) {
+                NPCs[index] = new NPC();
+                NPCs[index].position = position;
+                NPCs[index].isActive = true;
+                Console.WriteLine("created new player model");
+            }
+            else {
+                NPCs[index].position = position;
+            }
         }
     }
 }
